@@ -1,25 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import React, {Component} from "react";
+export default class App extends Component{
+state={
+count:0,
+step:1
 }
 
-export default App;
+increaseCount =()=> {
+  const {count,step}=this.state
+  this.setState({
+    count:count + step
+  })
+}
+increaseStep =()=> {
+  const {count,step}=this.state
+  this.setState({
+    step:step + 1
+  })
+}
+render(){
+  const {count,step}=this.state
+  return(
+    <div>
+      <h1>{count} metr</h1>
+      <button onClick={this.increaseCount}>Yurish:</button>
+      <h1>Qadam kattaligi: {step}</h1>
+      <button onClick={this.increaseStep}>Qadam kengaytirish: </button>
+    </div>
+  )
+}
+}
